@@ -1,0 +1,26 @@
+{
+  "name": "journal-api",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "git@github.com:Xavier577/journal-api.git",
+  "author": "Joseph Tsegen <tsegstech10@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "start": "node dist/main.js",
+    "build": "tsc",
+    "dev": "nodemon --exec ts-node ./src/main.ts --mode development"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongoose": "^8.0.4"
+  }
+}

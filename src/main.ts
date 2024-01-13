@@ -12,10 +12,10 @@ const server = http.createServer((req, res) => {
     console.log(`hit: ${req.url}`);
 
     match(pathname, {
+      "/api/journal": () => journalController.getJournal(req, res),
+      "/api/journal/edit": () => journalController.editJournal(req, res),
       "/api/journal/create": () => journalController.createJournal(req, res),
       "/api/journal/all": () => journalController.getAllJournals(req, res),
-      "/api/journal/edit": () => journalController.editJournal(req, res),
-      "/api/journal": () => journalController.getJournal(req, res),
       "/": () => replyHttp(200, "PING", res),
     });
   } catch (e) {
