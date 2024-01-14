@@ -1,6 +1,11 @@
 import { JournalService, journalService } from "../core/journal.service";
 import * as http from "http";
-import { catchAsync, getFullUrl, queryParser, replyHttp } from "../utils";
+import parseAsyncObjectId, {
+  catchAsync,
+  getFullUrl,
+  queryParser,
+  replyHttp,
+} from "../utils";
 
 export class JournalController {
   constructor(private readonly journalService: JournalService) {}
@@ -50,6 +55,8 @@ export class JournalController {
 
       const query = queryParser(getFullUrl(req));
 
+      await parseAsyncObjectId(query.id);
+
       const data = await this.journalService.getById(query.id);
 
       replyHttp(200, "success", res, data);
@@ -81,6 +88,8 @@ export class JournalController {
       }
 
       const query = queryParser(getFullUrl(req));
+
+      await parseAsyncObjectId(query.id);
 
       const reqBody = await new Promise<Record<string, any>>((res) => {
         let body = "";
